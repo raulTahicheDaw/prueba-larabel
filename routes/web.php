@@ -14,3 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('estudiantes', 'EstudianteController', ['except' =>['index']]);
+Route::get('/estudiantes/listado/{borrados?}', 'EstudianteController@listado');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

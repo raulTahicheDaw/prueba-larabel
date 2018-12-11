@@ -18,7 +18,7 @@ class CreateStudentsTable extends Migration
             $table->string('nombre',20);
             $table->string('apellido1',20);
             $table->string('apellido2',20);
-            $table->string('email',20)->unique();
+            $table->string('email')->unique();
             $table->dateTime('f_nacimiento');
             $table->timestamps();
         });
