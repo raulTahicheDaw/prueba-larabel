@@ -20,6 +20,7 @@ class CreateStudentsTable extends Migration
             $table->string('apellido2',20);
             $table->string('email')->unique();
             $table->dateTime('f_nacimiento');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

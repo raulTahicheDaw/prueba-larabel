@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
         Nota::truncate();
 
         factory(Estudiante::class, 1000)->create();
-        factory(Nota::class, 1000)->create();
+        factory(Nota::class, 10000)->create();
 
     }
 }

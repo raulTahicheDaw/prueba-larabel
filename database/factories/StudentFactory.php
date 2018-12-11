@@ -15,7 +15,7 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Estudiante::class, function (Faker $faker) {
     return [
-        'dni' => $faker->unique()->randomNumber($nbDigits = 8, $strict = false),
+        'dni' => $faker->unique()->dni,
         'nombre' => $faker->firstName,
         'apellido1' => $faker->lastName,
         'apellido2' => $faker->lastName,

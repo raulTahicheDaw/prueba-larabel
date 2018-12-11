@@ -131,6 +131,7 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'nombre.required' => 'Estas tonto, hay que poner un nombre',
     ],
 
     /*

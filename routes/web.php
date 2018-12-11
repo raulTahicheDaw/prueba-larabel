@@ -14,9 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('estudiantes/listado', 'EstudianteController@listado')->name('listado');
 
 Route::resource('estudiantes', 'EstudianteController', ['except' =>['index']]);
-Route::get('/estudiantes/listado/{borrados?}', 'EstudianteController@listado');
+
 
 Auth::routes();
 
