@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
     <div class="container">
         <div class="row justify-content-center">
             <div>
@@ -29,8 +30,14 @@
                                             {{$nota->asignatura}}({{$nota->nota}}),
                                         @endforeach
                                     </td>
-                                    <td id="borrar" class="botones "><a class="btn_borrar" href="#"><i
-                                                class="material-icons icon-red ">delete</i></a></td>
+                                    @if($estudiante->deleted_at)
+                                        <td id="borrar" class="botones "><i
+                                                class="material-icons icon-red ">close</i></td>
+                                    @else
+                                        <td id="borrar" class="botones "><a class="btn_borrar" href="#"><i
+                                                    class="material-icons icon-red ">delete</i></a></td>
+                                    @endif
+
                                 </tr>
                             @endforeach
                         </table>
@@ -46,7 +53,7 @@
             $("#estudiantes").on("click", ".btn_borrar", function () {
                 var tr = $(this).closest("tr");
                 var id = tr.data("id");
-                swal("¿Seguro que quieres borrar este usuario?", {
+                swal("¿Seguro que quieres borrar este estudiante?", {
                     buttons: {
                         cancel: "Cancelar",
                         defeat: "Aceptar",
@@ -59,13 +66,14 @@
                                     url: "{{url('/estudiantes')}}/" + id,
                                     method: "POST",
                                     data: {
-                                        _method: "DELETE"
+                                        _method: "DELETE",
+                                        "_token": "{{ csrf_token() }}",
                                     }
                                     , success: function () {
                                         tr.fadeOut(500, function () {
                                             $(this).remove();
                                         })
-                                        M.toast({html: 'Usuario borrado', classes: 'danger'});
+                                        M.toast({html: 'Estudiante borrado', classes: 'danger'});
                                     }
                                 });
 

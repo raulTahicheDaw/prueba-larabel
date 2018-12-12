@@ -83,7 +83,7 @@ class EstudianteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
     }
 
     /**
@@ -101,7 +101,7 @@ class EstudianteController extends Controller
 
     public function listado()
     {
-        $estudiantes = Estudiante::orderBy('nombre')->paginate(15);
+        $estudiantes = Estudiante::withTrashed()->orderBy('nombre')->paginate(15);
         return view('estudiantes.estudiantes', compact('estudiantes'));
     }
 }
